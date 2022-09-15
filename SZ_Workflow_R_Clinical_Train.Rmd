@@ -1,0 +1,60 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Packages
+
+```{r}
+library(haven)
+library(ggplot2)
+library(dplyr)
+library(gt)
+```
+
+Import adae
+```{r}
+adae <- read_sas("https://github.com/elong0527/r4csr/raw/master/data-adam/adae.sas7bdat", 
+    NULL)
+adae
+```
+Import adsl
+```{r}
+adsl <- read_sas("https://github.com/elong0527/r4csr/raw/master/data-adam/adsl.sas7bdat", 
+    NULL)
+adsl
+```
+
+Import adae
+```{r}
+adae %>%
+ filter(TRTAN >= 0L & TRTAN <= 80L) %>%
+ filter(AGE >= 60L & AGE <= 75L) %>%
+ filter(!(AEREL %in% 
+ "")) %>%
+ ggplot() +
+  aes(x = AESEV, fill = TRTA) +
+  geom_bar() +
+  scale_fill_hue(direction = 1) +
+  theme_minimal()
+```
+
+
+
+
+Prep Data
+```{r}
+
+```
+
+Viz
+```{r}
+
+``` 
+
+Table
+```{r}
+
+```
+
+
